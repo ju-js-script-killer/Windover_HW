@@ -14,7 +14,7 @@ do-while
 for-in
 
 */
-
+// example 1
 var month = Math.ceil(Math.random() * 12); // 1..12
 console.log(month);
 switch(month) {
@@ -30,6 +30,8 @@ switch(month) {
   default: console.log('осень');
 }
 
+
+// example 1.2
 if (month == 1 || month == 2 || month == 12) {
   console.log('зима');
 }

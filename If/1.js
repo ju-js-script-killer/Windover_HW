@@ -1,9 +1,15 @@
+/* Task 1. Дано целое число. Если оно является положительным,
+то прибавить к нему 1; в противном случае не изменять его.
+ Вывести полученное число.*/
 var a = Math.ceil(Math.random() * 10);
 if ( a > 0) {
     a++;
 }
 console.log( a );
 
+/* task 2. Дано целое число. Если оно является положительным,
+то прибавить к нему 1; в противном случае вычесть из него 2.
+Вывести полученное число.*/
 var a = Math.ceil(Math.random() * 10) -5;
 console.log("a=" + a);
 if (a > 0) {
@@ -14,7 +20,10 @@ else {
 }
 console.log(a);
 
-
+/* task 3. Дано целое число. Если оно является положительным,
+то прибавить к нему 1; если отрицательным, то вычесть из него 2;
+ если нулевым, то заменить его на 10.
+Вывести полученное число.*/
 var a = Math.ceil(Math.random() * 10) -5;
 console.log("a=" + a);
  if (a > 0) {
@@ -29,3 +38,156 @@ console.log("a=" + a);
    }
  }
  console.log(a);
+
+/* task 4. Даны три целых числа.
+ Найти количество положительных чисел в исходном наборе.
+ mine solution the longest*/
+
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+
+  if (a > 0 && b > 0 && c > 0) {
+    console.log (3);
+  }
+     else if (a > 0 && b > 0 && c <= 0)  {
+    console.log (2);
+     }
+  else if (a > 0 && b <= 0 && c > 0)  {
+    console.log (2);
+       }
+      else if (a <= 0 && b > 0 && c > 0)  {
+         console.log (2);
+            }
+            else if (a > 0 && b <= 0 && c <= 0)  {
+               console.log (1);
+                  }
+                  else if (a <= 0 && b <= 0 && c > 0)  {
+                     console.log (1);
+                        }
+                        else if (a <= 0 && b > 0 && c <= 0)  {
+                           console.log (1);
+                              }
+                  else {
+                    console.log(0);
+                        }
+      /* task 4.0
+      mine solution
+    */
+    var a = Math.ceil(Math.random() * 10) -5;
+    console.log("a= " + a);
+    var b = Math.ceil(Math.random() * 10) -5;
+    console.log("b= " + b);
+    var c = Math.ceil(Math.random() * 10) -5;
+    console.log("c= " + c);
+
+if (a > 0){
+  a = 1
+}
+else {
+  a = 0
+}
+  if (b > 0){
+  b = 1
+}
+else {
+  b = 0
+}
+ if (c > 0){
+  c = 1
+}
+else {
+  c = 0
+}
+var count = a + b + c;
+console.log(count);
+
+//task 4.1  not mine solution
+      var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+
+if(a>0) {
+  if(b>0) {
+    if(c>0) {
+      console.log(3);
+    }
+    else {
+      console.log(2);
+    }
+  }
+  else if (c>0){
+    console.log(2);
+  }
+  else {
+    console.log(1);
+  }
+}
+else if (b>0) {
+  if(c>0) {
+    console.log(2);
+  }
+  else {
+    console.log(1);
+  }
+}
+else if (c>0) {
+  console.log(1);
+}
+else {
+  console.log(0);
+}
+//task 4.2 not mine solution
+var arr = [];
+var count = 0;
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+
+arr = [a, b, c];
+
+for (var i=0; i<3; i++) {
+  if(arr[i]>0) {
+    count = count+1;
+  }
+}
+
+console.log(count);
+
+// task 6. Даны два числа. Вывести большее из них.
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+
+if (a > b) {
+   console.log(a);
+}
+else {
+console.log(b);
+}
+
+/* task 7. Даны два числа.
+Вывести порядковый номер меньшего из них.*/
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+
+if (a < b) {
+   console.log(1);
+}
+else {
+console.log(2);
+}
+
+/* task 8. Даны два числа.
