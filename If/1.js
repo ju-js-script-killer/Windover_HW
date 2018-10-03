@@ -143,6 +143,8 @@ else if (c>0) {
 else {
   console.log(0);
 }
+
+
 //task 4.2 not mine solution
 var arr = [];
 var count = 0;
@@ -162,6 +164,110 @@ for (var i=0; i<3; i++) {
 }
 
 console.log(count);
+
+//task 4.3
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+var count = 0;
+ if (a > 0) {
+   count++;
+ }
+ if (b > 0) {
+   count++;
+ }
+ if (c > 0) {
+   count++;
+ }
+ console.log(count);
+
+//task 4.4 solution in one string
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+console.log((a > 0) + (b > 0) + (c > 0));
+
+/*task 5.
+Даны три целых числа. Найти количество положительных
+и количество отрицательных чисел в исходном наборе.
+*/
+var arr = [];
+var count = 0;
+var t = 0;
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+
+arr = [a, b, c];
+
+for (var i=0; i<3; i++) {
+  if(arr[i]>0) {
+    count = count+1;
+  }
+  if(arr[i]<0) {
+    t = t+1;
+  }
+}
+console.log(count);
+console.log(t);
+
+
+//task 5.1
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+console.log((a > 0) + (b > 0) + (c > 0));
+console.log((a < 0) + (b < 0) + (c < 0));
+
+//task 5.2
+var arr = [];
+var count = 0;
+var t = 0;
+var a = Math.ceil(Math.random() * 10) -5;
+console.log("a= " + a);
+var b = Math.ceil(Math.random() * 10) -5;
+console.log("b= " + b);
+var c = Math.ceil(Math.random() * 10) -5;
+console.log("c= " + c);
+var i = 0;
+arr = [a, b, c];
+
+ if(arr[i]>0) {
+ count= count+1;
+ }
+if(arr[i]<0) {
+  t=t+1;
+}
+i++;
+if(arr[i]>0) {
+count= count+1;
+}
+if(arr[i]<0) {
+ t=t+1;
+}
+i++;
+if(arr[i]>0) {
+count= count+1;
+}
+if(arr[i]<0) {
+ t=t+1;
+}
+i++;
+console.log(count);
+console.log(t);
+
 
 // task 6. Даны два числа. Вывести большее из них.
 var a = Math.ceil(Math.random() * 10) -5;
@@ -191,3 +297,20 @@ console.log(2);
 }
 
 /* task 8. Даны два числа.
+ Вывести вначале большее, а затем меньшее из них.*/
+ var a = Math.ceil(Math.random() * 10) -5;
+ console.log("a= " + a);
+ var b = Math.ceil(Math.random() * 10) -5;
+ console.log("b= " + b);
+
+ if (a > b) {
+    console.log(a, b);
+ }
+else  {
+ console.log(b, a);
+ }
+
+/* task 9. Даны две переменные вещественного типа: a, b .
+ Перераспределить значения данных переменных так,
+ чтобы в a  оказалось меньшее из значений, а в  b — большее.
+ Вывести новые значения переменных  a и b.
