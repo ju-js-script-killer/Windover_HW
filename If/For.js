@@ -81,3 +81,40 @@ console.log ("b = ", b);
     console.log(i);
   }
 console.log(b - a + 1);
+
+/* Task 3. Cycle for. Даны целые числа a и b (a < b).
+Вывести в порядке убывания все целые числа, расположенные между a и b.
+( не включая сами числа  a и b), а также количество n этих чисел */
+var a = Math.ceil (Math.random() * 10);
+console.log ("a = ", a);
+var b = Math.ceil (Math.random() * 20);
+console.log ("b = ", b);
+  for ( var i = b - 1; i > a; i--) {
+    console.log(i);
+  }
+console.log(b - a - 1);
+
+/* Task 4. Cycle for. Дано вещественное число — цена 1 кг конфет.
+Вывести стоимость 1, 2, …, 10 кг конфет. */
+
+var sweet = Math.ceil(Math.random() *15000) / 10;
+console.log("1 kg of candy costs",sweet);
+ for (var i = 1; i <= 10; i++) {
+   console.log (i + " " + "kg cost" + " " + i*sweet);
+ }
+
+ /* Task 5. Cycle for. Дано вещественное число — цена 1 кг конфет.
+ Вывести стоимость 0.1, 0.2, …, 1 кг конфет. */
+ var sweet = Math.ceil(Math.random() *15000) / 10;
+ console.log("1 kg of candy costs",sweet);
+  for (var i = 1; i <= 10; i++) {
+    console.log (i + " " + "kg cost" + " " + i*sweet);
+  }
+
+  /* Task 6. Cycle for. Дано вещественное число — цена 1 кг конфет.
+  Вывести стоимость 1.2, 1.4, …, 2 кг конфет. */
+  var sweet = Math.ceil(Math.random() *15000) / 10;
+  console.log("1 kg of candy costs",sweet);
+   for (var i = 12; i <= 20; i+=2) {
+    console.log (i/10 + " " + "kg cost" + " " + i/10*sweet);
+  }
