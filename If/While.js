@@ -31,12 +31,12 @@ console.log(i);
  var a = 10;
  var b = 2;
  var remainder = a;
- var quotient;
+ var quotient = 0;
    while ( remainder >= b  ) {
    remainder = remainder - b;
+   quotient++;
  }
-  while (    ) {
-
-  }
  console.log(remainder);
  console.log(quotient);
+
+ 

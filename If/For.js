@@ -166,21 +166,7 @@ console.log(sum);
 Найти сумму N*N + (N+1)квадрат + (N+2)квадрат + ...+ (2*N)квадрат (целое число). */
 var N = 4;
 var sum = 0;
-var sum_final;
 for (var i = 0; i <= N; i++) {
   sum = sum + Math.pow(N + i, 2);
-}
-
-sum_final = sum + Math.pow(2 * N, 2);
-console.log(sum_final);
-
-// Task 11.1 ??? Разобрать
-var N = 4;
-var sum = 0;
-for (var i = 0; i <= N; i++) {
-  sum = sum + Math.pow(N + i, 2);
-  if (i == N) {
-    Math.pow(N + i, 2)*2;
-  }
 }
 console.log(sum);
