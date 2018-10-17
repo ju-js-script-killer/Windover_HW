@@ -1,3 +1,12 @@
+// Examples. 2 conditions.
+var x = 15;
+  while (x > 5 || x % 5 == 0) {
+  console.log (x);
+  x--;
+  }
+
+
+
 /*Task 1.  Даны положительные числа a и b (a > b). На отрезке длины a
  размещено максимально возможное количество отрезков
  длины b (без наложений).Не используя операции
@@ -38,5 +47,3 @@ console.log(i);
  }
  console.log(remainder);
  console.log(quotient);
-
- 
