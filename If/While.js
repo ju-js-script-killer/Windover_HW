@@ -51,13 +51,11 @@ console.log(i);
  /*Task 4. Дано целое число N (N > 0). Если оно является степенью числа 3,
  то вывести True, если не является — вывести False.*/
 
- /*var N = 9;
- var i = false;
-
+ var N = 9;
   while (N % 3 == 0) {
-   i = true;
+   N /= 3;
   }
-console.log(i);*/
+console.log(N == 1);
 
 
 /* While5. Дано целое число N (N > 0), являющееся некоторой степенью числа 2:
@@ -67,8 +65,8 @@ var N = 32;
 var a = 2;
 var i = 0;
 var max = N;
-while( max / a >= 0 ) {
-  max = max / a;
+while( max % a == 0 ) {
+  max /= a;
 i++;
 }
 console.log (i);
