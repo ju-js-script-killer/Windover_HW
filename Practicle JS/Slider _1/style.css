@@ -1,0 +1,60 @@
+body {
+  background: #eeeeee;
+}
+.wrapper {
+  width: 1200px;
+  background: white;
+  margin: 0px auto;
+}
+.header {
+  background: green;
+  color: white;
+  text-align: center;
+  padding: 40px 0px;
+  font-size: 40px;
+}
+.menu {
+  text-align: center;
+  font-size: 25px;
+  background: #fed346;
+  padding: 20px 0px;
+}
+.menu > a {
+  margin: 0px 15px;
+  color: black;
+  text-decoration: none;
+}
+.main {
+  display: table;
+  width: 100%;
+  min-height: 1000px;
+}
+.main > div {
+  display: table-cell;
+  vertical-align: top;
+  padding: 10px;
+}
+.sidebar {
+  width: 250px;
+  background: #aaaaaa;
+}
+
+.slider {
+  height: 300px;
+  overflow-x: hidden;
+}
+.slider > div {
+  width: 500%;
+  height: 100%;
+}
+.slider > div::after {
+  content: '';
+  clear: both;
+  float: none;
+  display: table;
+}
+.slider > div > div {
+  width: 20%;
+  height: 100%;
+  float: left;
+}

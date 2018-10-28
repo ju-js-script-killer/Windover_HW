@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">Название сайта</div>
+      <div class="menu">
+        <a href="#">Ссылка</a>
+        <a href="#">Ссылка</a>
+        <a href="#">Ссылка</a>
+        <a href="#">Ссылка</a>
+        <a href="#">Ссылка</a>
+      </div>
+      <div class="main">
+        <div class="sidebar">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div class="content">
+          <h1>Заголовок страницы</h1>
+          <p>Какой-то текст</p>
+          <div class="slider">
+            <div>
+              <div style="background: red;"></div>
+              <div style="background: yellow;"></div>
+              <div style="background: green;"></div>
+              <div style="background: purple;"></div>
+              <div style="background: blue;"></div>
+            </div>
+          </div>
+          
+          <button class="left">Влево</button>
+          <button class="right">Вправо</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      var leftButton = document.querySelector('.left');
+      var rightButton = document.querySelector('.right');
+      var innerDiv = document.querySelector('.slider > div');
+      var margin = 0;
+      var slideWidth = innerDiv.children[0].offsetWidth; // 910
+      var targetMargin = 0;
+      var speed = 10;
+      leftButton.onclick = function() {
+        targetMargin += slideWidth;
+        var t = setInterval(function() {
+          margin += speed;
+          if (margin == targetMargin) {
+            clearInterval(t);
+          }
+          innerDiv.style.marginLeft = margin + 'px';
+        }, 25);
+      };
+      rightButton.onclick = function() {
+        targetMargin -= slideWidth;
+        var t = setInterval(function() {
+          margin -= speed;
+          if (margin == targetMargin) {
+            clearInterval(t);
+          }
+          innerDiv.style.marginLeft = margin + 'px';
+        }, 25);
+      };
+    </script>
+  </body>
+</head>
