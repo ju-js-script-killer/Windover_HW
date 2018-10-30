@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <style>
+      #cv1 {
+        margin: 50px auto;
+        outline: 1px solid black;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="cv1" tabindex="1" width="720" height="480"></canvas>
+    <script>
+      const canvas = document.querySelector('#cv1');
+      const ctx = canvas.getContext('2d');
+      const [width, height] = [canvas.width, canvas.height];
+      let [movingLeft, movingRight, movingUp, movingDown] = [false, false, false, false];
+      const images = [
+      ].map((file) => {
+        const img = new Image();
+        img.src = 'images/' + file;
+        return image;
+      });
+      const keys = {
+        LEFT: 37,
+        UP: 38,
+        RIGHT: 39,
+        DOWN: 40
+      };
+      const speed = 10;
+      let [x, y] = [0, 0];
+
+      const update = () => {
+        x += movingLeft ? -speed : movingRight ? speed : 0;
+        y += movingUp ? -speed : movingDown ? speed : 0;
+      };
+      const draw = () => {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(x, y, 100, 100);
+      };
+      const keyPressed = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        switch(e.keyCode) {
+          case keys.LEFT: movingLeft = true; break;
+          case keys.RIGHT: movingRight = true; break;
+          case keys.UP: movingUp = true; break;
+          case keys.DOWN: movingDown = true;
+        }
+      };
+      const keyReleased = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        switch(e.keyCode) {
+          case keys.LEFT: movingLeft = false; break;
+          case keys.RIGHT: movingRight = false; break;
+          case keys.UP: movingUp = false; break;
+          case keys.DOWN: movingDown = false;
+        }
+      };
+      const mousePressed = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        [x, y] = [e.offsetX, e.offsetY];
+      };
+
+      setInterval(update, 25);
+      setInterval(draw, 25);
+      canvas.onkeydown = keyPressed;
+      canvas.onkeyup = keyReleased;
+      canvas.onclick = mousePressed;
+    </script>
+  </body>
+</html>
