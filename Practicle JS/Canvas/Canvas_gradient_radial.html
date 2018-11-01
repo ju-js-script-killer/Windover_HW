@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas Gradient</title>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="300"
+  style="border:1px solid #000000;">
+</canvas>
+
+  <script>
+  function draw() {
+    var сanvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+      var ctx = canvas.getContext ("2d");
+
+      var radial = ctx.createRadialGradient (50, 50, 100, 24, 24, 10);
+      radial.addColorStop (0, "blue"); // 0 - позиция от 0 до 1 с которой начинается цвет
+      radial.addColorStop (0.7, "green");
+      radial.addColorStop (1, "yellow");
+
+      ctx.fillStyle = radial;
+      ctx.fillRect (0, 0, 170, 170);
+    }
+  }
+draw ();
+
+  </script>
+</body>
+</html>
