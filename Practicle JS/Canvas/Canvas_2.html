@@ -18,7 +18,7 @@
       const [width, height] = [canvas.width, canvas.height];
       let [movingLeft, movingRight, movingUp, movingDown] = [false, false, false, false];
       const images = [
-      ].map((file) => {
+      ].map((file) => {    
         const img = new Image();
         img.src = 'images/' + file;
         return image;
@@ -62,8 +62,8 @@
         }
       };
       const mousePressed = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        e.preventDefault(); // отменяет действие браузера по умолчанию
+        e.stopPropagation(); // Пробрасывает клик функции (не дает клика на родителей)
         [x, y] = [e.offsetX, e.offsetY];
       };
 
