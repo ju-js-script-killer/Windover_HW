@@ -1,0 +1,50 @@
+body {
+  background: url(img/leaves.png);
+}
+header {
+  margin-top: 100px;
+  font-family: 'Cuprum', sans-serif;
+}
+.d-d-menu {
+  margin: 0;
+  padding: 0;
+}
+.d-d-menu ul,
+.d-d-menu ol {
+list-style: none;
+}
+.d-d-menu > ul {
+  display: flex;
+  justify-content: center;
+}
+.d-d-menu > ul li a {
+display: block;
+background: white;
+padding: 15px 30px 15px 40px;
+font-size: 14px;
+color: #123b12;
+text-decoration: none;
+text-transform: uppercase;
+}
+.d-d-menu > ul li {
+  position: relative;
+  border-right: 1px solid #123b12;
+}
+.d-d-menu > ul li > a i.fas{ /* отделяем иконуи от текста */
+  position: absolute;
+  top: 15px;
+  left: 12px;
+  font-size: 18px;
+}
+.d-d-menu > ul li:first-child{ /* на первой рамке меню с лева отображаем границу  */
+  border-left: 1px solid #123b12;
+}
+.d-d-menu > ul li:last-child{
+  border-right: 1px solid #123b12;
+}
+/* Анимируем меню */
+.d-d-menu li a:hover {
+background: #123b12;
+color: white;
+box-shadow: 1px;
+}
