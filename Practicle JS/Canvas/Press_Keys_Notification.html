@@ -28,30 +28,30 @@
         let text = '';
         function foo (e) {  // const foo = (e) => {
           switch (e.keyCode) {
-            case keys.LEFT: text = 'LEFT pressed'; break;
-            case keys.UP: text = 'UP pressed'; break;
-            case keys.RIGHT: text = 'RIGHT pressed'; break;
-            case keys.DOWN: text = 'DOWN pressed'; break;
-            default: text = 'Another button';
+            case keys.LEFT: text = 'LEFT pressed'; ctx.fillStyle = "red"; break; // добавление цвета на каж кномпу по нажатию
+            case keys.UP: text = 'UP pressed'; ctx.fillStyle = "white"; break;
+            case keys.RIGHT: text = 'RIGHT pressed'; ctx.fillStyle = "red"; break;
+            case keys.DOWN: text = 'DOWN pressed'; ctx.fillStyle = "black"; break;
+            default: text = 'Another button'; ctx.fillStyle = "blue";
           }
         };
         function bar (e) {     // const bar = (e) => {
           switch (e.keyCode) {
-            case keys.LEFT: text = 'LEFT released'; break;
-            case keys.UP: text = 'UP released'; break;
-            case keys.RIGHT: text = 'RIGHT released'; break;
-            case keys.DOWN: text = 'DOWN released'; break;
-            default: text = 'Another button';
+            case keys.LEFT: text = 'LEFT released'; ctx.fillStyle = "grey"; break;
+            case keys.UP: text = 'UP released'; ctx.fillStyle = "grey"; break;
+            case keys.RIGHT: text = 'RIGHT released'; ctx.fillStyle = "grey"; break;
+            case keys.DOWN: text = 'DOWN released'; ctx.fillStyle = "grey"; break;
+            default: text = 'Another button'; ctx.fillStyle = "blue";
           }
         };
         document.onkeydown = foo;
         document.onkeyup = bar;
         setInterval (function () {
           ctx.clearRect(0, 0, width, height);
-          ctx.font = "30px Arial";
-          ctx.fillText (text, 300, 200);
-          /*ctx.lineWidth = 2;
-          ctx.strokeStyle = "red";*/
+          ctx.font = "70px Arial";
+      /*  ctx.fillStyle = "red"; // последовательность в функции важна , для каждого нажатия красный.*/
+          ctx.fillText (text, 170, 220);
+
         }, 25);
         </script>
   </body>
