@@ -5,7 +5,7 @@
     <style>
       canvas {
         margin: 0px auto;
-        border: 1px sold black;
+        border: 1px solid black;
         display:block;
       }
     </style>
@@ -14,16 +14,29 @@
     <canvas width = "800" height = "400"></canvas>
     <script>
      const canvas = document.querySelector('canvas');
-     const ctx = canvas.getcontext('2d');
-     const []
+     const ctx = canvas.getContext('2d');
+     const [width, height] = [canvas.width, canvas.height];/* Поскольку мы не можем указать точные координаты квадрата, . */
 
+     let x = Math.floor(Math.random() * (width - 50)); /* Задаем функцией math.random появление квадрата в разных местах по оси х;
+      так как Math.random задает число положительное за границей канваса слева квадрат не может появиться, и что бы он не появился за границей справа
+      мы берем ширину канваса и вычитаем 50 px. */
+     let y = Math.floor(Math.random() * (height - 50)); /* Аналогично по оси Y (вниз), что бы квадрат не уехал вниз,
+     берем максимальную точку высоты канваса и вычитаем 50 px.      */
+     let speedX = Math.random() - 0.5 < 0 ? -3 : 3; /*     */
+     let speedY = Math.random() - 0.5 < 0 ? -3 : 3;
 
-
-
-
-
-
+     setInterval(() => {
+       ctx.clearRect(0, 0, width, height);
+       ctx.fillRect(x, y, 50, 50);
+       x += speedX;
+       if (x < 0 || x > width - 50) {
+         speedX =-speedX;
+       }
+       y +=speedY;
+       if (y < 0 || y > height - 50) {
+         speedY =-speedY;
+       }
+     }, 25);
     </script>
-
   </body>
 </html>
