@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cubes_pushing_from_borders</title>
+    <style>
+    canvas {
+      margin: 0px auto; /*задаем канвасу границы, стили*/
+      border: none;
+      display:block;
+      background: grey;
+      border-radius: 5px;
+    }
+    </style>
+  </head>
+  <body>
+    <canvas width = "800" height = "400"></canvas>
+    <script>
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      const [width, height] = [canvas.width, canvas.height];
+
+      const cubes = [];                                     /*Понимая, что нам нужно 5 квадратов(можно меньше или больше)
+                                                              создадим массив квадратов                                 */
+      for (let i = 0; i < 5; i++) {                         /* Что бы задавать им свойства и вызывать из массива нам нужен индекс
+                                                              делаем это при помощи условия for и счетчика, командой i < 5 задается кол-во квадратов */
+        cubes [i] = {                                       /*Теперь для каждого i-того куба (опишем объект) */
+          x: Math.floor(Math.random() * (width - 50)),      /* задаем рандомные координаты появления кубов, что бы не пояились за макс. размер
+                                                            канваса с права, вычитаем из ширины канваса ширину куба ( 50 px) */
+          y: Math.floor(Math.random() * (height - 50)),     /* задаем рандомные координаты появления кубов по оси Y, что бы не пояились за макс. размер
+                                                            канваса с низу, вычитаем из высоты канваса высоту куба ( 50 px) */
+          speedX: Math.random() - 0.5 < 0 ? -1 : 1,         /* задаем координаты движения кубов, если команда (mathRandom - 0.5) получится отрицательным числом
+                                                              по куб сместится на 1 px влево ( в сторону уменьшения оси X), если положительным числом то вправо */
+          speedY: Math.random() - 0.5 < 0 ? -1 : 1          /* продолжаем задавать координаты движения кубов по оси Y, если команда (mathRandom - 0.5) получится отрицательным числом
+                                                              по куб сместится на 1 px вверх ( в сторону уменьшения Y), если положительным числом то вниз */
+        };
+      }
+
+      setInterval (() => {                                    /*Открываем функцию с утановкой интервала каждые 25 мл сек*/
+        ctx.clearRect (0, 0, width, height);                 /*очищаем весь периметр канваса  */
+        for (let i = 0; i < 5; i ++) {                       /*   */
+          ctx.fillRect ( cubes[i].x, cubes[i].y, 50, 50);    /*   */
+          cubes[i].x += cubes[i].speedX;                     /*   */
+          if (cubes[i].x < 0 || cubes[i].x > width - 50){    /*   */
+            cubes[i].speedX = -cubes[i].speedX;              /*   */
+          }
+          cubes[i].y += cubes[i].speedY;                     /*   */
+          if (cubes[i].y < 0 || cubes[i].y > height - 50){   /*   */
+            cubes[i].speedY = -cubes[i].speedY;              /*   */
+        }
+      }
+      }, 25);
+    </script>
+  </body>
+</html>
