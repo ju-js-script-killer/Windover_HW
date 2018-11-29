@@ -3,30 +3,38 @@
   <head>
     <title>The_Traffic_Light</title>
     <style>
-      canvas {
+      .first_can {
         margin: 0px auto;
-        border: 1px solid black;
+        border: none;
         display: block;
         background-color: black;
+        border-radius: 10px;
+      }
+      .second_can {
+        margin: 0px auto;
+        border: none;
+        display: block;
+        background-color: grey;
       }
     </style>
   </head>
   <body>
-    <canvas tabindex = "1" width="200" height="600"></canvas>
+    <canvas class = "first_can" tabindex = "1" width="200" height="600"></canvas>
+    <canvas class = "second_can" tabindex = "2" width="70" height="600"></canvas>
     <script>
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext ('2d');
 
 
-    let stop_car = (e) =>     {
+    let stop_car = (e) => {
       ctx.beginPath();
       ctx.lineWidth = 5;
       ctx.strokeStyle = "grey";
-      ctx.fillStyle = "red";
+      ctx.fillStyle = "blue";
       ctx.arc(100, 100, 70, 0, Math.PI*2, false);
       ctx.stroke();
       ctx.closePath();
-    }                                            /*Метод arc принимает 6 аргументов:
+  }                                            /*Метод arc принимает 6 аргументов:
                                                  Первый - это точка x (центр круга);
                                                   Вторая - это точка y;
                                                   Радиус круга;
@@ -68,8 +76,6 @@
     stop_car ();
     wait_car ();
     go_car ();
-
-
 
 
 
