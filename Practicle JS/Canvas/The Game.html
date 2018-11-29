@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>The Game</title>
+    <style>
+      canvas {
+        margin: 0px auto;
+        border: 1px solid blue;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas tabindex = "1" width="800" height="400"></canvas>
+    <script>
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      const [width, height] = [canvas.width, canvas.height];
+      let cube = {                                            /*Теперь, вместо того что бы присваивать 4 переменных, упакуем все в объект со свойствами */
+      x: Math.floor(Math.random() * (width - 50)),            /* Функцией Math.floor округляем до целого (рандомное число выданное при помощи функции Math.random
+                                                              умноженное на ширину канваса - 50 . - 50 ширина нашего куба, вычитаем ее что бы куб не выехал за рамки канваса */
+      y: Math.floor(Math.random() * (height - 50)),           /* Аналогино с координатой по оси Y.  Тут вычитаем 50 из высоты снизу.  */
+      speedX: Math.random() - 0.5 < 0 ? -3 : 3,               /*задаем координаты движения и скорость куба. Выдаем рандомное число, вычитаем 0.5 ( что бы была вероятность получить
+                                                              отрицательное число), если это число меньше нуля, то двигаться будет на - 3px  т.е в лево по 3 px, иначе по 3 px вправо */
+      speedY: Math.random() - 0.5 < 0 ? -3 : 3                /*То же самое по оси y, если рандомное число - 0.5 < 0 , то куб двигаться будет на - 3px вверх, иначе вниз.  */
+    }
+
+      let x = width / 2 - 75;                                 /*We centered the down_Rect on x-asics*/
+      let [movingLeft, movingRight] = [false, false];         /* Создаем новые переменные ( в массиве)  для движения на право и на лево ( назвали соответственно) и присвоили им значение false*/
+      const speed = 10;                                       /* Также необходимо задать скорость передвижения Нижнего куба по оси Х , задаем 10px*/
+
+      const keys = {                                          /* У каждой клавиши есть некий keyCode присвоенный в виде цифры, для клавиши стрелочка влево это 37, для клавиши стрелочка вправо 39,
+                                                                записали их свойство в ново созданный массив keys . */
+        LEFT: 37,
+        RIGHT: 39,
+      };
+
+      canvas.onkeydown = (e) => {                             /*Опишем функцию для движения нижнего квадрата влево, вправо  помощью switch/case.  */
+        switch(e.keyCode) {                                   /*К switch/case подключаем аргумент (е) (его мы записывали выше в фунцции) и даем команду использования кодов keyCode */
+          case keys.LEFT: movingLeft = true; break;           /*Описываем первый case. Вызываем из объекта keys первый индекс LEFT (keys.LEFT) и присваеваем ему действие   */
+          case keys.RIGHT: movingRight = true;                /*Опишем функцию для движения нижнего квадрата влево, вправо  помощью switch/case.  */
+        }
+      };
+      canvas.onkeyup = (e) => {
+        switch(e.keyCode) {
+          case keys.LEFT: movingLeft = false; break;
+          case keys.RIGHT: movingRight = false;
+        }
+      };
+
+      setInterval(() => {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillRect(cube.x, cube.y, 50, 50);
+        ctx.fillRect(x, height - 50, 150, 50);
+        x += movingLeft ? -speed : movingRight ? speed : 0;
+        cube.x += cube.speedX;
+        if (cube.x < 0 || cube.x > width - 50) {
+          cube.speedX *= -1;
+        }
+        cube.y += cube.speedY;
+        if (cube.y < 0 || cube.y > height - 100 && cube.x + 50 > x && cube.x < x + 150) {
+          cube.speedY *= -1;
+        }
+      }, 25);
+    </script>
+  </body>
+</html>

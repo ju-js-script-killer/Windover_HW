@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>The_Traffic_Light</title>
+    <style>
+      canvas {
+        margin: 0px auto;
+        border: 1px solid black;
+        display: block;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas tabindex = "1" width="200" height="600"></canvas>
+    <script>
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext ('2d');
+
+
+    let stop_car = (e) =>     {
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "grey";
+      ctx.fillStyle = "red";
+      ctx.arc(100, 100, 70, 0, Math.PI*2, false);
+      ctx.stroke();
+      ctx.closePath();
+    }                                            /*Метод arc принимает 6 аргументов:
+                                                 Первый - это точка x (центр круга);
+                                                  Вторая - это точка y;
+                                                  Радиус круга;
+                                                  Начальный угол окружности;
+                                                  Конечный угол окружности;
+                                                  Направление прорисовки (false – по часовой стрелке) */
+    let wait_car = (e) => {
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "grey";
+      ctx.fillStyle = "yellow";
+      ctx.arc(100, 300, 70, 0, Math.PI*2, false);
+      ctx.stroke();
+      ctx.closePath();
+  }
+
+    let go_car = (e) => {
+      ctx.beginPath();
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = "grey";
+      ctx.fillStyle = "green";
+      ctx.arc(100, 500, 70, 0, Math.PI*2, false);
+      ctx.stroke();
+      ctx.closePath();
+    }
+
+
+   canvas.onclick = (e) => {
+   let start = Date.now();                      // сохранить время начала
+
+    let timer = setInterval (() => {           // вычислить сколько времени прошло
+      let timePassed = Date.now() - start;
+    /*  ctx.fillStyle(); */
+
+      if (timePassed >= 3000) clearInterval(timer);                 // конец через 1 секунду
+         },  25 );
+      }
+
+    stop_car ();
+    wait_car ();
+    go_car ();
+
+
+
+
+
+    </script>
+
+  </body>
+</html>
