@@ -20,62 +20,108 @@
   </head>
   <body>
     <canvas class = "first_can" tabindex = "1" width="200" height="600"></canvas>
-    <canvas class = "second_can" tabindex = "2" width="70" height="600"></canvas>
+    <canvas class = "second_can" tabindex = "2" width="50" height="600"></canvas>
     <script>
     const canvas = document.querySelector('canvas');
-    const ctx = canvas.getContext ('2d');
+    const ctx_r = canvas.getContext ('2d');
+    const ctx_y = canvas.getContext ('2d');
+    const ctx_g = canvas.getContext ('2d');
 
+    function pausecomp(millis) { var date = new Date(); var curDate = null; do { curDate = new Date(); } while(curDate-date < millis); }
 
-    let stop_car = (e) => {
-      ctx.beginPath();
-      ctx.lineWidth = 5;
-      ctx.strokeStyle = "grey";
-      ctx.fillStyle = "blue";
-      ctx.arc(100, 100, 70, 0, Math.PI*2, false);
-      ctx.stroke();
-      ctx.closePath();
-  }                                            /*Метод arc принимает 6 аргументов:
+      ctx_r.beginPath();
+      ctx_r.lineWidth = 5;
+      ctx_r.strokeStyle = "grey";
+      ctx_r.fillStyle = "red";
+      ctx_r.arc(100, 100, 70, 0, Math.PI*2, false);
+      ctx_r.stroke();
+      ctx_r.closePath();
+                                           /*Метод arc принимает 6 аргументов:
                                                  Первый - это точка x (центр круга);
                                                   Вторая - это точка y;
                                                   Радиус круга;
                                                   Начальный угол окружности;
                                                   Конечный угол окружности;
                                                   Направление прорисовки (false – по часовой стрелке) */
-    let wait_car = (e) => {
-      ctx.beginPath();
-      ctx.lineWidth = 5;
-      ctx.strokeStyle = "grey";
-      ctx.fillStyle = "yellow";
-      ctx.arc(100, 300, 70, 0, Math.PI*2, false);
-      ctx.stroke();
-      ctx.closePath();
-  }
+                                                  function isIntersectRed(x, y) {
 
-    let go_car = (e) => {
-      ctx.beginPath();
-      ctx.lineWidth = 5;
-      ctx.strokeStyle = "grey";
-      ctx.fillStyle = "green";
-      ctx.arc(100, 500, 70, 0, Math.PI*2, false);
-      ctx.stroke();
-      ctx.closePath();
-    }
+                                                    return Math.sqrt((x-100) ** 2 + (y - 100) ** 2) < 70;
+
+                                                  }
+
+                                                 canvas.onclick = (e) => {
+                                                   x = e.offsetX;
+                                                   y = e.offsetY;
 
 
-   canvas.onclick = (e) => {
-   let start = Date.now();                      // сохранить время начала
+                                                   if (isIntersectRed(x, y)) {
+                                                     ctx_r.beginPath();
+                                                     ctx_r.lineWidth = 5;
+                                                     ctx_r.strokeStyle = "grey";
+                                                     ctx_r.fillStyle = "red";
+                                                     ctx_r.arc(100, 100, 70, 0, Math.PI*2, false);
+                                                     ctx_r.stroke();
+                                                     ctx_r.fill();
+                                                      ctx_r.closePath();
+  pausecomp(100000);
+  ctx_r.beginPath();
+  ctx_r.lineWidth = 5;
+  ctx_r.strokeStyle = "grey";
+  ctx_r.fillStyle = "black";
+  ctx_r.arc(100, 100, 70, 0, Math.PI*2, false);
+  ctx_r.stroke();
+  ctx_r.fill();
+   ctx_r.closePath();
 
-    let timer = setInterval (() => {           // вычислить сколько времени прошло
-      let timePassed = Date.now() - start;
-    /*  ctx.fillStyle(); */
 
-      if (timePassed >= 3000) clearInterval(timer);                 // конец через 1 секунду
-         },  25 );
-      }
 
-    stop_car ();
-    wait_car ();
-    go_car ();
+
+
+                                               }
+                                             }
+
+
+
+
+      ctx_y.beginPath();
+      ctx_y.lineWidth = 5;
+      ctx_y.strokeStyle = "grey";
+      ctx_y.fillStyle = "yellow";
+      ctx_y.arc(100, 300, 70, 0, Math.PI*2, false);
+      ctx_y.stroke();
+      ctx_y.closePath();
+
+
+
+      ctx_g.beginPath();
+      ctx_g.lineWidth = 5;
+      ctx_g.strokeStyle = "grey";
+      ctx_g.fillStyle = "green";
+      ctx_g.arc(100, 500, 70, 0, Math.PI*2, false);
+      ctx_g.stroke();
+      ctx_g.closePath();
+
+
+
+
+
+   /*let start = Date.now(); */                     // сохранить время начала
+
+    /*let timer = setInterval (() => { */            // вычислить сколько времени прошло
+
+
+
+
+
+      /*let timePassed = Date.now() - start;*/
+
+
+
+      /*if (timePassed >= 3000) clearInterval(timer); */                // конец через 1 секунду
+        /* },  25 );*/
+
+
+
 
 
 
