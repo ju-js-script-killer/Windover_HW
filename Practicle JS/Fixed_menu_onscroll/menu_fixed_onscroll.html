@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <style>
+      .block {
+        height: 800px;
+        width: 100%;
+      }
+      .menu {
+        background: #999999;
+        color: white;
+        height: 50px;
+        text-align: center;
+      }
+      .fixed {
+        position: fixed;
+        width: 100%;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block" style="background: red"></div>
+    <div class="menu">меню</div>
+    <div class="block" style="background: yellow"></div>
+    <div class="block" style="background: green"></div>
+    <div class="block" style="background: blue"></div>
+    <script>
+      var menu = document.querySelector('.menu');
+      var top1 = menu.offsetTop; // top1 = 808
+      var fixed = false;
+      document.onscroll = function() {
+        if (!fixed && menu.getBoundingClientRect().top < 0) {
+          menu.className += ' fixed';
+          fixed = true;
+        }
+        else if (fixed && window.scrollY < top1) {
+          menu.className = menu.className.split(' ')[0];
+          fixed = false;
+        }
+      };
+    </script>
+  </body>
+</html>
