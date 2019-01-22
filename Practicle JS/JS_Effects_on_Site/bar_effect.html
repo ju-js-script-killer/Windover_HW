@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Задача 1</title>
+    <style>
+      @keyframes abracabra {
+        from {opacity: 0; transform: translateX(300px)}
+        to {opacity: 1; transform: translateX(0px)}
+      }
+      .test {
+        width: 500px;
+      }
+      .animated {
+        animation: abracabra 2s ease-in-out both;
+      }
+      .bar {
+        background: #999999;
+        height: 30px;
+      }
+      .bar.fill {
+        background: #0000ff;
+      }
+      .test > .bar:nth-child(1) > .bar.fill {
+        transition: 1.0s 0.2s width ease-in-out;
+      }
+      .test > .bar:nth-child(2) > .bar.fill {
+        transition: 1.2s 0.2s width ease-in-out;
+      }
+      .test > .bar:nth-child(3) > .bar.fill {
+        transition: 1.4s 0.2s width ease-in-out;
+      }
+      .test > .bar:nth-child(4) > .bar.fill {
+        transition: 1.6s 0.2s width ease-in-out;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.waypoint').each(function() {
+          var elem = $(this);
+          elem.waypoint(function() {
+              elem.addClass('animated');
+              $('.bar.fill').each(function() {
+                $(this).css({
+                  width: '75%'
+                });
+              });
+              
+            }, {
+            triggerOnce: true,
+            offset: 500
+          });
+        });
+        
+      });
+    </script>
+  </head>
+  <body>
+    <div style="height: 1200px"></div>
+    <div class="test waypoint">
+      <div class="bar">
+        <div class="bar fill" style="width:0%"></div>
+      </div>
+      <div class="bar">
+        <div class="bar fill" style="width:0%"></div>
+      </div>
+      <div class="bar">
+        <div class="bar fill" style="width:0%"></div>
+      </div>
+      <div class="bar">
+        <div class="bar fill" style="width:0%"></div>
+      </div>
+    </div>
+  </body>
+</html>

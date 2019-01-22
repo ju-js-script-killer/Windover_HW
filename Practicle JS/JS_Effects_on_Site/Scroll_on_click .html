@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <style>
+      .block {
+        height: 800px;
+        width: 100%;
+      }
+      .menu {
+        background: #999999;
+        color: white;
+        height: 50px;
+        text-align: center;
+      }
+      .fixed {
+        position: fixed;
+        width: 100%;
+        top: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="block1" class="block" style="background: red"></div>
+    <div class="menu">
+      <span class="block1">1</span>
+      <span class="block2">2</span>
+      <span class="block3">3</span>
+      <span class="block4">4</span>
+    </div>
+    <div id="block2" class="block" style="background: yellow"></div>
+    <div id="block3" class="block" style="background: green"></div>
+    <div id="block4" class="block" style="background: blue"></div>
+    <script>
+      var menu = document.querySelector('.menu');
+      var top1 = menu.offsetTop;
+      var fixed = false;
+      document.onscroll = function() {
+        if (!fixed && menu.getBoundingClientRect().top < 0) {
+          menu.className += ' fixed';
+          fixed = true;
+        }
+        else if (fixed && window.scrollY < top1) {
+          menu.className = menu.className.split(' ')[0];
+          fixed = false;
+        }
+      };
+      
+      menu.onclick = function(e) {
+        let target = e.target;
+        let idblock = target.className;
+        let scrollTarget = document.querySelector('#' + idblock).offsetTop;
+
+        let t = setInterval(function() {
+          if (Math.abs(scrollY - scrollTarget) < 10) {
+            scrollTo(0, scrollTarget);
+            clearInterval(t);
+          } else if (scrollY < scrollTarget) {
+            scrollBy(0, 10);
+          } else if (scrollY > scrollTarget) {
+            scrollBy(0, -10);
+          }
+        }, 15);
+      };
+    </script>
+  </body>
+</html>
