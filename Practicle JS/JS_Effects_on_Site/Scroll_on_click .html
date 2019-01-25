@@ -44,7 +44,7 @@
           fixed = false;
         }
       };
-      
+
       menu.onclick = function(e) {
         let target = e.target;
         let idblock = target.className;
@@ -55,9 +55,9 @@
             scrollTo(0, scrollTarget);
             clearInterval(t);
           } else if (scrollY < scrollTarget) {
-            scrollBy(0, 10);
+            scrollBy(0, 20);
           } else if (scrollY > scrollTarget) {
-            scrollBy(0, -10);
+            scrollBy(0, -20);
           }
         }, 15);
       };
