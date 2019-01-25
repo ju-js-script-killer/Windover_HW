@@ -3,25 +3,25 @@
   <head>
     <title>Задача 1</title>
     <style>
-      @keyframes abracabra {
-        from {opacity: 0; transform: translateX(300px)}
-        to {opacity: 1; transform: translateX(0px)}
+      @keyframes abracabra {      /* создание анимации , имя анимации прописываем любое*/
+        from {opacity: 0; transform: translateX(300px)} /*  прозрачность от 0 и анимацию ведем по оси х от 300px*/
+        to {opacity: 1; transform: translateX(0px)} /* прозрачность до 1  и анимация до 0 , подезжает к левому краю*/
       }
       .test {
-        width: 500px;
+        width: 500px; /* примет высоту баров, а ширину задаем*/
       }
       .animated {
-        animation: abracabra 2s ease-in-out both;
+        animation: abracabra 2s ease-in-out both; /* класс не применяется в разметке , добавим его в js*/
       }
-      .bar {
+      .bar { стили бара
         background: #999999;
         height: 30px;
       }
       .bar.fill {
         background: #0000ff;
       }
-      .test > .bar:nth-child(1) > .bar.fill {
-        transition: 1.0s 0.2s width ease-in-out;
+      .test > .bar:nth-child(1) > .bar.fill {   /* в родительскои диве вложенный див первый и в нем бар фил див*/
+        transition: 1.0s 0.2s width ease-in-out;  /* анимация с задержкой 0.2 сек у всех  , скорость заполнения бара синим у всех разная*/
       }
       .test > .bar:nth-child(2) > .bar.fill {
         transition: 1.2s 0.2s width ease-in-out;
@@ -33,43 +33,43 @@
         transition: 1.6s 0.2s width ease-in-out;
       }
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> <!--подключение библиотеки jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.0/jquery.waypoints.min.js"></script> <!--плагин для  jquery waypoints-->
     <script>
-      $(document).ready(function() {
-        $('.waypoint').each(function() {
-          var elem = $(this);
-          elem.waypoint(function() {
-              elem.addClass('animated');
-              $('.bar.fill').each(function() {
-                $(this).css({
-                  width: '75%'
+      $(document).ready(function() { // синтаксис jquery типа window onload, когда документ загружен выполняется функция , и можно вставлять в скрипт много раз , для каждой функции.
+        $('.waypoint').each(function() {// на каждый найденный элемент waypoint  функция
+          var elem = $(this);  // создаем переменную элем вызываем див тест вейпоинт поочереди ( если их несколько) $(this);
+          elem.waypoint(function() {  // работает плагин , вызываем функцию когда мы доскролим до этого элемента
+              elem.addClass('animated'); //  добавление свойств аниматед в родительский див
+              $('.bar.fill').each(function() { //  ($ объект можно заменить jQuery) выбираем элементы и для них вызываем функцию
+                $(this).css({  // каждый из бар филов  назначаем новое свойство css ширина
+                  width: $(this).text() // берет текст каждого дива и переобразовывает с css свойство ширина
                 });
               });
-              
+
             }, {
-            triggerOnce: true,
-            offset: 500
+            triggerOnce: true, //  запускать 1 раз истина
+            offset: 500 // запускать когда будет смещение 500 можно поставить 'bottom-in-view'
           });
         });
-        
+
       });
     </script>
   </head>
   <body>
     <div style="height: 1200px"></div>
-    <div class="test waypoint">
-      <div class="bar">
-        <div class="bar fill" style="width:0%"></div>
+    <div class="test waypoint"> родительски  див , внутри не го лежат полосочки
+      <div class="bar"> внешний бар  серый
+        <div class="bar fill" style="width:0%">80%</div> внутренний бар синий
       </div>
       <div class="bar">
-        <div class="bar fill" style="width:0%"></div>
+        <div class="bar fill" style="width:0%">90%</div>
       </div>
       <div class="bar">
-        <div class="bar fill" style="width:0%"></div>
+        <div class="bar fill" style="width:0%">50%</div>
       </div>
       <div class="bar">
-        <div class="bar fill" style="width:0%"></div>
+        <div class="bar fill" style="width:0%">40%</div>
       </div>
     </div>
   </body>

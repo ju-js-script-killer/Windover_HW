@@ -22,12 +22,12 @@
   <body>
     <div id="block1" class="block" style="background: red"></div>
     <div class="menu">
-      <span class="block1">1</span>
+      <span class="block1">1</span> <!-- класс нейм должен содержать id блока -->
       <span class="block2">2</span>
       <span class="block3">3</span>
       <span class="block4">4</span>
     </div>
-    <div id="block2" class="block" style="background: yellow"></div>
+    <div id="block2" class="block" style="background: yellow"></div> <!-- класс блок - нужен потому что надо задать каж блоку высоту. не играет роли в скрипте-->
     <div id="block3" class="block" style="background: green"></div>
     <div id="block4" class="block" style="background: blue"></div>
     <script>
@@ -46,9 +46,9 @@
       };
 
       menu.onclick = function(e) {
-        let target = e.target;
-        let idblock = target.className;
-        let scrollTarget = document.querySelector('#' + idblock).offsetTop;
+        let target = e.target; элеменнм по которому кликнули
+        let idblock = target.className; извлекаем класс
+        let scrollTarget = document.querySelector('#' + idblock).offsetTop; //складываем значек # с классом что бы получить селектор сss #block x
 
         let t = setInterval(function() {
           if (Math.abs(scrollY - scrollTarget) < 10) {
