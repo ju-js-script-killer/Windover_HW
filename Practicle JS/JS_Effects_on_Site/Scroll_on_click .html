@@ -46,18 +46,18 @@
       };
 
       menu.onclick = function(e) {
-        let target = e.target; элеменнм по которому кликнули
-        let idblock = target.className; извлекаем класс
+        let target = e.target; // элемент по которому кликнули
+        let idblock = target.className; // извлекаем класс
         let scrollTarget = document.querySelector('#' + idblock).offsetTop; //складываем значек # с классом что бы получить селектор сss #block x
 
         let t = setInterval(function() {
-          if (Math.abs(scrollY - scrollTarget) < 10) {
+          if (Math.abs(scrollY - scrollTarget) < 15) {
             scrollTo(0, scrollTarget);
             clearInterval(t);
           } else if (scrollY < scrollTarget) {
-            scrollBy(0, 20);
+            scrollBy(0, 40);
           } else if (scrollY > scrollTarget) {
-            scrollBy(0, -20);
+            scrollBy(0, -40);
           }
         }, 15);
       };
