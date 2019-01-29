@@ -17,6 +17,9 @@
         width: 100%;
         top: 0px;
       }
+      .active {
+
+      }
     </style>
   </head>
   <body>
@@ -34,7 +37,10 @@
       var menu = document.querySelector('.menu');
       var top1 = menu.offsetTop;
       var fixed = false;
-      document.onscroll = function() {
+       let lighted = 0; нулевой индекс, перый пункт подсвечивается, задаем это в переменной
+
+      }
+      document.onscroll = function() { на каждое движение скола
         if (!fixed && menu.getBoundingClientRect().top < 0) {
           menu.className += ' fixed';
           fixed = true;
@@ -43,23 +49,43 @@
           menu.className = menu.className.split(' ')[0];
           fixed = false;
         }
+        for (let i = 0, i < menu.children.lenght; i++) {
+          let idblock = menu.children [i].className;
+          let blockTop = document.querySelector('#' + idblock).offsetTop;
+        if (scrolY >= blockTop) {
+          menu.children[lighted].style.background = ' ';
+          menu.children[i].style.background = ' green ';
+          lighted = i;
+        }
+
+      else {
+
+      }
       };
 
+
+
+       let acvive = false;
+       let scrollTarget ; // одна и таже анимация которая тянет то вверх то вниз
       menu.onclick = function(e) {
         let target = e.target; // элемент по которому кликнули
         let idblock = target.className; // извлекаем класс
-        let scrollTarget = document.querySelector('#' + idblock).offsetTop; //складываем значек # с классом что бы получить селектор сss #block x
+        scrollTarget = document.querySelector('#' + idblock).offsetTop; //складываем значек # с классом что бы получить селектор сss #block x
 
+        if (!active) {
+          active = true;
         let t = setInterval(function() {
           if (Math.abs(scrollY - scrollTarget) < 15) {
             scrollTo(0, scrollTarget);
             clearInterval(t);
+            active = false;
           } else if (scrollY < scrollTarget) {
             scrollBy(0, 40);
           } else if (scrollY > scrollTarget) {
             scrollBy(0, -40);
           }
         }, 15);
+      }
       };
     </script>
   </body>
